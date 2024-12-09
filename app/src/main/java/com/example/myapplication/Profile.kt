@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -28,20 +29,42 @@ class Profile : Fragment() {
         val username = view.findViewById<TextView>(R.id.username)
 
         val analiseList = view.findViewById<RecyclerView>(R.id.analise)
-        val analise = ArrayList<AnaliseItem>()
+        val analiseSaveList = view.findViewById<RecyclerView>(R.id.analiseSave)
 
-        analise.add(AnaliseItem("Пластиковая бутылка", "1шт."))
-        analise.add(AnaliseItem("Тэтрапак", "1шт."))
-        analise.add(AnaliseItem("Целофановый пакт", "1шт."))
-        analise.add(AnaliseItem("Пластиковая форма", "1шт."))
+        val analise = ArrayList<AnaliseItem>()
+        val analiseSave = ArrayList<AnaliseItem>()
+
+        val repository = ShoppingItemRepository(context as Context)
+        val shoppingItems = repository.getAllShoppingItems()
+        val packageIdCounts: Map<Int, Int> = shoppingItems
+            .groupingBy { it.package_id }
+            .eachCount()
+
+        for ((packageId, count) in packageIdCounts) {
+            val packageItem = PackageRepository.packages[packageId]
+            if (packageItem.save) {
+                analiseSave.add(AnaliseItem(packageItem.name, "${count}шт."))
+            }
+            else {
+                analise.add(AnaliseItem(packageItem.name, "${count}шт."))
+            }
+        }
 
 
         analiseList.layoutManager = LinearLayoutManager(requireContext())
         analiseList.adapter = AnaliseAdapter(analise, requireContext())
 
-
+        analiseSaveList.layoutManager = LinearLayoutManager(requireContext())
+        analiseSaveList.adapter = AnaliseAdapter(analiseSave, requireContext())
 
         username.text = "Татьяна"
+
+        val buttonLogout = view.findViewById<Button>(R.id.buttonLogout)
+        buttonLogout.setOnClickListener {
+            val intent = Intent(context, Login::class.java)
+            startActivity(intent)
+        }
+
         return view
     }
 

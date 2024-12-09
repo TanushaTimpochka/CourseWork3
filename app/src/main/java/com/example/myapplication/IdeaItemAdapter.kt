@@ -31,10 +31,9 @@ class IdeaItemAdapter(var ideasItems: List<IdeaItem>, var context: Context) : Re
         holder.idea_name.text = ideasItems[position].name
         holder.idea_description.text = ideasItems[position].description
 
-        val imgFile = File("@drawable/default_image.png")
-        val resID = context.resources.getIdentifier("@drawable/default_image", "drawable", null)
-
-        val imgBitmap = BitmapFactory.decodeFile(imgFile.absolutePath)
-        holder.image.setImageResource(resID)
+//        val imgFile = File("@drawable/default_image.png")
+//
+//        val imgBitmap = BitmapFactory.decodeFile(imgFile.absolutePath)
+//        holder.image.setImageResource(resID)
     }
 }

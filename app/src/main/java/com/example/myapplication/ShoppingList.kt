@@ -1,10 +1,13 @@
 package com.example.myapplication
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.ShoppingItem
@@ -22,17 +25,18 @@ class ShoppingList : Fragment() {
     ): View? {
         val view: View = inflater.inflate(R.layout.fragment_shopping_list, container, false)
         val shoppingList: RecyclerView = view.findViewById(R.id.shoppingList)
-        val vacancies = ArrayList<ShoppingItem>()
+        val buttonAdd: Button = view.findViewById(R.id.buttonAdd)
 
-        vacancies.add(ShoppingItem(1, "Мясо", 6))
-        vacancies.add(ShoppingItem(2, "Овощи на развес", 1))
-        vacancies.add(ShoppingItem(3, "Вода 1.5 литра", 2))
-        vacancies.add(ShoppingItem(4, "Сок 1 литр", 3))
-
+        val repository = ShoppingItemRepository(context as Context)
+        val shoppingItems = repository.getAllShoppingItems()
 
         shoppingList.layoutManager = LinearLayoutManager(requireContext())
-        shoppingList.adapter = ShoppingItemAdapter(vacancies, requireContext())
+        shoppingList.adapter = ShoppingItemAdapter(shoppingItems, requireContext())
 
+        buttonAdd.setOnClickListener {
+            val intent = Intent(context, ShoppingItemCreation::class.java)
+            startActivity(intent)
+        }
 
         return view
     }
