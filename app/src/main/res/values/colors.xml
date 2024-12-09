@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="green_text_color">#000000</color>
+    <color name="green_primary">#4CAF50</color>
+    <color name="green_primary_variant">#388E3C</color>
+    <color name="green_on_primary">#FFFFFF</color>
+    <color name="green_secondary">#66BB6A</color>
+    <color name="green_secondary_variant">#43A047</color>
+    <color name="green_on_secondary">#FFFFFF</color>
+    <color name="green_background">#F1F8E9</color>
+    <color name="green_menu_background">#EDFFE5</color>
+    <color name="green_on_background">#000000</color>
+    <color name="green_surface">#E8F5E9</color>
+    <color name="green_on_surface">#000000</color>
+    <color name="green_error">#B00020</color>
+    <color name="green_on_error">#FFFFFF</color>
+</resources>

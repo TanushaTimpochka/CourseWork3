@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Mobile" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/green_primary</item>
+        <item name="colorPrimaryVariant">@color/green_primary_variant</item>
+        <item name="colorOnPrimary">@color/green_on_primary</item>
+        <item name="colorSecondary">@color/green_secondary</item>
+        <item name="colorSecondaryVariant">@color/green_secondary_variant</item>
+        <item name="colorOnSecondary">@color/green_on_secondary</item>
+        <item name="android:colorBackground">@color/green_background</item>
+        <item name="backgroundColor">@color/green_background</item>
+        <item name="colorOnBackground">@color/green_on_background</item>
+<!--        <item name="android:colorSurface">@color/green_surface</item>-->
+        <item name="colorSurface">@color/green_surface</item>
+        <item name="colorOnSurface">@color/green_on_surface</item>
+        <item name="colorError">@color/green_error</item>
+        <item name="colorOnError">@color/green_on_error</item>
+    </style>
+    <style name="Theme.Mobile" parent="Base.Theme.Mobile" />
+
+</resources>
